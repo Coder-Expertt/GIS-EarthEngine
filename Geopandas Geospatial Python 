@@ -1,0 +1,322 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNYVT2xonuW2eS7mqQYEKAM",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Coder-Expertt/GIS-EarthEngine/blob/main/Geopandas%20Geospatial%20Python%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "dC6oP3zYOzmb",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        },
+        "outputId": "f13b0eb2-7009-410b-84df-035c2eb47acc"
+      },
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<IPython.core.display.HTML object>"
+            ],
+            "text/html": [
+              "\n",
+              "            <style>\n",
+              "                .geemap-dark {\n",
+              "                    --jp-widgets-color: white;\n",
+              "                    --jp-widgets-label-color: white;\n",
+              "                    --jp-ui-font-color1: white;\n",
+              "                    --jp-layout-color2: #454545;\n",
+              "                    background-color: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-dark .jupyter-button {\n",
+              "                    --jp-layout-color3: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab {\n",
+              "                    background-color: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab .jupyter-button {\n",
+              "                    --jp-layout-color3: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "            </style>\n",
+              "            "
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'2.2.2'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 11
+        }
+      ],
+      "source": [
+        "\n",
+        "import geopandas as gpd\n",
+        "import pandas as pd\n",
+        "pd.__version__"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "ee.Authenticate()\n",
+        "ee.Initialize(project='gis-rs-av')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 17
+        },
+        "id": "BxzJ5AnoQXYX",
+        "outputId": "fe74da8b-527b-4840-9b32-3ef5344c1e56"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<IPython.core.display.HTML object>"
+            ],
+            "text/html": [
+              "\n",
+              "            <style>\n",
+              "                .geemap-dark {\n",
+              "                    --jp-widgets-color: white;\n",
+              "                    --jp-widgets-label-color: white;\n",
+              "                    --jp-ui-font-color1: white;\n",
+              "                    --jp-layout-color2: #454545;\n",
+              "                    background-color: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-dark .jupyter-button {\n",
+              "                    --jp-layout-color3: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab {\n",
+              "                    background-color: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab .jupyter-button {\n",
+              "                    --jp-layout-color3: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "            </style>\n",
+              "            "
+            ]
+          },
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Find out or Display the Geopanda version"
+      ],
+      "metadata": {
+        "id": "WEcXJ4sSEDQd"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "gpd.__version__"
+      ],
+      "metadata": {
+        "id": "GvFn8BhGRVlT",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        },
+        "outputId": "28fa906c-ad09-40ed-d989-99cf03fe7eb6"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<IPython.core.display.HTML object>"
+            ],
+            "text/html": [
+              "\n",
+              "            <style>\n",
+              "                .geemap-dark {\n",
+              "                    --jp-widgets-color: white;\n",
+              "                    --jp-widgets-label-color: white;\n",
+              "                    --jp-ui-font-color1: white;\n",
+              "                    --jp-layout-color2: #454545;\n",
+              "                    background-color: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-dark .jupyter-button {\n",
+              "                    --jp-layout-color3: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab {\n",
+              "                    background-color: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab .jupyter-button {\n",
+              "                    --jp-layout-color3: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "            </style>\n",
+              "            "
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'1.1.3'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Data for five large global cities in form of dictionary\n"
+      ],
+      "metadata": {
+        "id": "-TVOaiJ7Glu3"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = {\n",
+        "    \"Name\": [\"NY City\", \"Sao Paulo\", \"Tokyo\", \"Lagos\", \"Sydney\"],\n",
+        "    \"Population\": [8419000, 12330000, 13960000, 14860000, 5312000],\n",
+        "    \"Latitude\":[40.7128, -23.5505, 35.6895, 6.5244, -33.8688],\n",
+        "    \"Longitude\":[-74.0060, -46.6333, 139.6917, 3.3792, 151.2093]\n",
+        "}\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        },
+        "collapsed": true,
+        "id": "WQEe2sPwD8UN",
+        "outputId": "1713060c-70d5-4cb0-c6e4-8c746bda6a9c"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<IPython.core.display.HTML object>"
+            ],
+            "text/html": [
+              "\n",
+              "            <style>\n",
+              "                .geemap-dark {\n",
+              "                    --jp-widgets-color: white;\n",
+              "                    --jp-widgets-label-color: white;\n",
+              "                    --jp-ui-font-color1: white;\n",
+              "                    --jp-layout-color2: #454545;\n",
+              "                    background-color: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-dark .jupyter-button {\n",
+              "                    --jp-layout-color3: #383838;\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab {\n",
+              "                    background-color: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "\n",
+              "                .geemap-colab .jupyter-button {\n",
+              "                    --jp-layout-color3: var(--colab-primary-surface-color, white);\n",
+              "                }\n",
+              "            </style>\n",
+              "            "
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'NY City'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 20
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "cities_df = pd.dataframe()"
+      ],
+      "metadata": {
+        "id": "X6ZbC0AIPV4q"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "bLFrd6VBLOyQ"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
